@@ -5,7 +5,7 @@ Summary:        Faust AUdio Stream (real-time audio signal processing language)
 Group:          Development/Other
 License:        GPLv2+ and BSD
 URL:            http://faust.grame.fr/
-Source0:        http://downloads.sourceforge.net/faudiostream/%{name}-%{version}.tar.gz
+Source:         http://downloads.sourceforge.net/faudiostream/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  doxygen
@@ -73,9 +73,11 @@ for KDE's Kate/Kwrite.
 iconv -f iso8859-1 -t utf8 examples/README -o tmpfile
 
 %build
+perl -pi -e 's/\/lib/\/%{_lib}/g' Makefile
+
 %make PREFIX=%{_prefix}
 pushd compiler
-    doxygen
+doxygen
 popd
 
 %install
@@ -84,7 +86,6 @@ mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_datadir}/doc/faust
 mkdir -p %{buildroot}%{_datadir}/compiler/doc
 mkdir -p %{buildroot}%{_datadir}/lib/faust
-touch %{buildroot}%{_datadir}/faust
 touch -r examples/README tmpfile
 mv -f tmpfile examples/README
 make install DESTDIR=%{buildroot} PREFIX=%{_prefix}
@@ -109,9 +110,8 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
+%{_libdir}/%{name}
 %{_bindir}/%{name}
-%{_datadir}/%{name}/
-%{_libdir}/%{name}/
 %doc COPYING README examples
 
 %files doc
