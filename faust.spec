@@ -1,21 +1,21 @@
-Name:		faust
-Version:	0.9.10
-Release:	%mkrel 1	
-Summary:	Faust AUdio Stream (real-time audio signal processing langage)
-Group:		Development/Other
-License:	GPLv2+ and BSD
-URL:		http://faust.grame.fr/
-Source0:	http://downloads.sourceforge.net/faudiostream/%{name}-%{version}.tar.gz
-Patch0:		faust-0.9.10-fix-makefile.patch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-BuildRequires:	doxygen
-BuildRequires:	tetex
-BuildRequires:	libgraphviz-devel
-BuildRequires:	libxdot4
-Requires:	libglitz1
-Suggests:	jackit
-Suggests:	csound
-Suggests:	octave
+Name:           faust
+Version:        0.9.10
+Release:        %mkrel 1    
+Summary:        Faust AUdio Stream (real-time audio signal processing language)
+Group:          Development/Other
+License:        GPLv2+ and BSD
+URL:            http://faust.grame.fr/
+Source0:        http://downloads.sourceforge.net/faudiostream/%{name}-%{version}.tar.gz
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+
+BuildRequires:  doxygen
+BuildRequires:  tetex
+BuildRequires:  graphviz-devel
+
+Requires:       libglitz1
+Suggests:       jackit
+Suggests:       csound
+Suggests:       octave
 
 %description
 Faust AUdio STreams is a functional programming language for real-time audio
@@ -35,10 +35,10 @@ processor block-diagram : a piece of code that produces output signals
 according to its input signals (and maybe some user interface parameters)
 
 %package doc
-Summary:	Documentation for %{name}
-Group:		Documentation
-License:	GPLv2+
-Requires:	%{name} = %{version}-%{release}
+Summary:    Documentation for %{name}
+Group:      Documentation
+License:    GPLv2+
+Requires:   %{name} = %{version}-%{release}
 
 %description doc
 Faust AUdio STreams is a functional programming language for real-time audio
@@ -46,10 +46,10 @@ signal processing. This package provides documentation files to help with
 writing programs with faust.
 
 %package tools
-Summary:	3rd party tools written for %{name}
-Group:		Development
-License:	GPLv2+
-Requires:	%{name} = %{version}-%{release}
+Summary:    3rd party tools written for %{name}
+Group:      Development
+License:    GPLv2+
+Requires:   %{name} = %{version}-%{release}
 
 %description tools
 Faust AUdio STreams is a functional programming language for real-time audio
@@ -57,11 +57,11 @@ signal processing. These additional tools are provided by various contributors
 to help the building process of applications and plugins with Faust.
 
 %package kate
-Summary:	Kate/Kwrite plugin for %{name}
-Group:		Applications/Editors
-License:	GPLv2+
-Requires:	%{name} = %{version}-%{release}
-Requires:	kdesdk
+Summary:    Kate/Kwrite plugin for %{name}
+Group:      Applications/Editors
+License:    GPLv2+
+Requires:   %{name} = %{version}-%{release}
+Requires:   kdesdk
 
 %description kate
 Faust AUdio STreams is a functional programming language for real-time audio
@@ -71,12 +71,11 @@ for KDE's Kate/Kwrite.
 %prep
 %setup -q
 iconv -f iso8859-1 -t utf8 examples/README -o tmpfile
-%patch0 -p0
 
 %build
-%make
+%make PREFIX=%{_prefix}
 pushd compiler
-	doxygen
+    doxygen
 popd
 
 %install
@@ -88,7 +87,9 @@ mkdir -p %{buildroot}%{_datadir}/lib/faust
 touch %{buildroot}%{_datadir}/faust
 touch -r examples/README tmpfile
 mv -f tmpfile examples/README
-make install DESTDIR=%{buildroot}
+make install DESTDIR=%{buildroot} PREFIX=%{_prefix}
+
+cp -a dox %{buildroot}%{_datadir}/doc/faust/
 
 mv documentation/faust-quick-reference-src/illustrations/ documentation
 rm -fr documentation/faust-quick-reference-src
@@ -101,7 +102,7 @@ mv tools/%{name}2appls/README README.appls
 
 mkdir -p %{buildroot}%{_datadir}/kde4/apps/katepart/syntax/
 cp -a syntax-highlighting/%{name}.xml \
-	%{buildroot}%{_datadir}/kde4/apps/katepart/syntax/
+    %{buildroot}%{_datadir}/kde4/apps/katepart/syntax/
 
 %clean
 rm -rf %{buildroot}
@@ -116,6 +117,7 @@ rm -rf %{buildroot}
 %files doc
 %defattr(-,root,root,-)
 %doc documentation/* 
+%doc dox
 
 %files tools
 %defattr(-,root,root,-)
