@@ -1,6 +1,6 @@
 Name:           faust
 Version:        0.9.10
-Release:        %mkrel 1    
+Release:        %mkrel 2
 Summary:        Faust AUdio Stream (real-time audio signal processing language)
 Group:          Development/Other
 License:        GPLv2+ and BSD
@@ -12,7 +12,7 @@ BuildRequires:  doxygen
 BuildRequires:  tetex
 BuildRequires:  graphviz-devel
 
-Requires:       libglitz1
+Requires:       glitz
 Suggests:       jackit
 Suggests:       csound
 Suggests:       octave
