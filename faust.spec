@@ -36,7 +36,7 @@ according to its input signals (and maybe some user interface parameters)
 
 %package doc
 Summary:    Documentation for %{name}
-Group:      Documentation
+Group:      Development/Other
 License:    GPLv2+
 Requires:   %{name} = %{version}-%{release}
 
@@ -47,7 +47,7 @@ writing programs with faust.
 
 %package tools
 Summary:    3rd party tools written for %{name}
-Group:      Development
+Group:      Development/Other
 License:    GPLv2+
 Requires:   %{name} = %{version}-%{release}
 
@@ -58,7 +58,7 @@ to help the building process of applications and plugins with Faust.
 
 %package kate
 Summary:    Kate/Kwrite plugin for %{name}
-Group:      Applications/Editors
+Group:      Development/Other
 License:    GPLv2+
 Requires:   %{name} = %{version}-%{release}
 Requires:   kdesdk
@@ -76,9 +76,7 @@ iconv -f iso8859-1 -t utf8 examples/README -o tmpfile
 perl -pi -e 's/\/lib/\/%{_lib}/g' Makefile
 
 %make PREFIX=%{_prefix}
-pushd compiler
-doxygen
-popd
+%make doc PREFIX=%{_prefix}
 
 %install
 rm -rf %{buildroot}
