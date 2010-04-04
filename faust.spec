@@ -1,6 +1,6 @@
 Name:           faust
 Version:        0.9.10
-Release:        %mkrel 2
+Release:        %mkrel 3
 Summary:        Faust AUdio Stream (real-time audio signal processing language)
 Group:          Development/Other
 License:        GPLv2+ and BSD
@@ -73,7 +73,7 @@ for KDE's Kate/Kwrite.
 iconv -f iso8859-1 -t utf8 examples/README -o tmpfile
 
 %build
-perl -pi -e 's/\/lib/\/%{_lib}/g' Makefile
+#perl -pi -e 's/\/lib/\/%{_lib}/g' Makefile
 
 %make PREFIX=%{_prefix}
 %make doc PREFIX=%{_prefix}
@@ -108,7 +108,7 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%{_libdir}/%{name}
+%{_prefix}/lib/%{name}
 %{_bindir}/%{name}
 %doc COPYING README examples
 
