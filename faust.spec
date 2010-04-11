@@ -1,6 +1,6 @@
 Name:           faust
 Version:        0.9.10
-Release:        %mkrel 3
+Release:        %mkrel 4
 Summary:        Faust AUdio Stream (real-time audio signal processing language)
 Group:          Development/Other
 License:        GPLv2+ and BSD
@@ -9,7 +9,6 @@ Source:         http://downloads.sourceforge.net/faudiostream/%{name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  doxygen
-BuildRequires:  tetex
 BuildRequires:  graphviz-devel
 
 Requires:       glitz
@@ -73,7 +72,6 @@ for KDE's Kate/Kwrite.
 iconv -f iso8859-1 -t utf8 examples/README -o tmpfile
 
 %build
-#perl -pi -e 's/\/lib/\/%{_lib}/g' Makefile
 
 %make PREFIX=%{_prefix}
 %make doc PREFIX=%{_prefix}
@@ -87,8 +85,6 @@ mkdir -p %{buildroot}%{_datadir}/lib/faust
 touch -r examples/README tmpfile
 mv -f tmpfile examples/README
 make install DESTDIR=%{buildroot} PREFIX=%{_prefix}
-
-cp -a dox %{buildroot}%{_datadir}/doc/faust/
 
 mv documentation/faust-quick-reference-src/illustrations/ documentation
 rm -fr documentation/faust-quick-reference-src
