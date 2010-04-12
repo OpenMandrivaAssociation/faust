@@ -1,6 +1,10 @@
-Name:           faust
-Version:        0.9.10
-Release:        %mkrel 4
+%define name    faust
+%define version 0.9.10
+%define release %mkrel 4
+
+Name:           %{name}
+Version:        %{version}
+Release:        %{release}
 Summary:        Faust AUdio Stream (real-time audio signal processing language)
 Group:          Development/Other
 License:        GPLv2+ and BSD
@@ -74,6 +78,10 @@ iconv -f iso8859-1 -t utf8 examples/README -o tmpfile
 %build
 
 %make PREFIX=%{_prefix}
+
+#limit doxy generation to html:
+sed -i -e "s/GENERATE_LATEX         = YES/GENERATE_LATEX          = NO/g" compiler/Doxyfile
+
 %make doc PREFIX=%{_prefix}
 
 %install
