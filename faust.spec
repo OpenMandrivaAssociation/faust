@@ -1,6 +1,6 @@
 %define name    faust
 %define version 0.9.10
-%define release %mkrel 4
+%define release %mkrel 5
 
 Name:           %{name}
 Version:        %{version}
@@ -64,7 +64,7 @@ Summary:    Kate/Kwrite plugin for %{name}
 Group:      Development/Other
 License:    GPLv2+
 Requires:   %{name} = %{version}-%{release}
-Requires:   kdesdk
+Requires:   kdesdk4
 
 %description kate
 Faust AUdio STreams is a functional programming language for real-time audio
