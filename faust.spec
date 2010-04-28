@@ -1,3 +1,4 @@
+
 %define name    faust
 %define version 0.9.10
 %define release %mkrel 5
