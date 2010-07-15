@@ -1,7 +1,7 @@
 
 %define name    faust
-%define version 0.9.10
-%define release %mkrel 5
+%define version 0.9.24
+%define release %mkrel 1
 
 Name:           %{name}
 Version:        %{version}
