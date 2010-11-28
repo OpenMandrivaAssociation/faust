@@ -1,6 +1,6 @@
 
 %define name    faust
-%define version 0.9.24
+%define version 0.9.30
 %define release %mkrel 1
 
 Name:           %{name}
@@ -14,7 +14,7 @@ Source:         http://downloads.sourceforge.net/faudiostream/%{name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  doxygen
-BuildRequires:  graphviz-devel
+BuildRequires:  graphviz
 
 Requires:       glitz
 Suggests:       jackit
