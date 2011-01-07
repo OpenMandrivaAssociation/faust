@@ -1,7 +1,7 @@
 
 %define name    faust
 %define version 0.9.30
-%define release %mkrel 1
+%define release %mkrel 2
 
 Name:           %{name}
 Version:        %{version}
@@ -43,6 +43,7 @@ Summary:    Documentation for %{name}
 Group:      Development/Other
 License:    GPLv2+
 Requires:   %{name} = %{version}-%{release}
+BuildArch: noarch
 
 %description doc
 Faust AUdio STreams is a functional programming language for real-time audio
