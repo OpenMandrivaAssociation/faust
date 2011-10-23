@@ -125,7 +125,7 @@ rm -rf %{buildroot}
 
 %files tools
 %defattr(-,root,root,-)
-%doc tools/README README.supercollider README.appls tools/%{name}2pd-*
+%doc tools/README README.supercollider README.appls
 %{_bindir}/%{name}2*
 
 %files kate
