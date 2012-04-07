@@ -1,7 +1,7 @@
 
 %define name    faust
-%define version 0.9.43
-%define release %mkrel 1
+%define version 0.9.46
+%define release 1
 
 Name:           %{name}
 Version:        %{version}
@@ -11,6 +11,7 @@ Group:          Development/Other
 License:        GPLv2+ and BSD
 URL:            http://faust.grame.fr/
 Source:         http://downloads.sourceforge.net/faudiostream/%{name}-%{version}.tar.gz
+Patch0:         faust-0.9.46-unistd-gcc47.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  doxygen
@@ -75,10 +76,10 @@ for KDE's Kate/Kwrite.
 
 %prep
 %setup -q
+%patch0 -p1
 iconv -f iso8859-1 -t utf8 examples/README -o tmpfile
 
 %build
-
 %make PREFIX=%{_prefix}
 
 #limit doxy generation to html:
