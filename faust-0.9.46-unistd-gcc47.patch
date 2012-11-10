@@ -1,0 +1,19 @@
+--- faust-0.9.46.orig/architecture/osclib/faust/src/nodes/RootNode.cpp	2012-04-07 20:31:32.651764961 +0200
++++ faust-0.9.46/architecture/osclib/faust/src/nodes/RootNode.cpp	2012-04-07 20:31:44.688409547 +0200
+@@ -23,6 +23,7 @@
+ 
+ #include <string>
+ #include <sstream>
++#include <unistd.h>
+ 
+ #include "RootNode.h"
+ #include "Message.h"
+--- faust-0.9.46.orig/compiler/parser/faustlexer.cpp
++++ faust-0.9.46/compiler/parser/faustlexer.cpp
+@@ -783,8 +783,7 @@ char *yytext;
+ #line 6 "parser/faustlexer.l"
+ #include "tree.hh"
+ #include "faustparser.hpp"
+-#define YY_NO_UNISTD_H 1
+-extern int isatty (int );
++#include <unistd.h>
