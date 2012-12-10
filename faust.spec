@@ -135,3 +135,56 @@ rm -rf %{buildroot}
 %{_datadir}/kde4/apps/katepart/syntax/%{name}.xml
 
 
+
+
+%changelog
+* Sat Apr 07 2012 Frank Kober <emuse@mandriva.org> 0.9.46-1
++ Revision: 789769
+- new version
+  o add patch to fix build with gcc 4.7
+
+* Sun Oct 23 2011 Frank Kober <emuse@mandriva.org> 0.9.43-1
++ Revision: 705774
+- new version 0.9.43
+
+* Fri Jan 07 2011 Thierry Vignaud <tv@mandriva.org> 0.9.30-2mdv2011.0
++ Revision: 629718
+- make doc subpackage noarch
+
+* Sun Nov 28 2010 Frank Kober <emuse@mandriva.org> 0.9.30-1mdv2011.0
++ Revision: 602499
+- new version 0.9.30
+  o fix graphviz BR to properly generate doc
+
+* Thu Jul 15 2010 Frank Kober <emuse@mandriva.org> 0.9.24-1mdv2011.0
++ Revision: 553554
+- new version 0.9.24
+
+* Thu Apr 29 2010 Luis Daniel Lucio Quiroz <dlucio@mandriva.org> 0.9.10-5mdv2010.1
++ Revision: 540688
+- Fix faulst-kate requires
+
+* Mon Apr 12 2010 Frank Kober <emuse@mandriva.org> 0.9.10-4mdv2010.1
++ Revision: 533722
+- build html dox only, fix doc separation from main pack
+- fix documentation path
+
+* Sun Apr 04 2010 Frank Kober <emuse@mandriva.org> 0.9.10-3mdv2010.1
++ Revision: 531479
+- install faust source lib in /lib even on x86_64
+
+* Sun Apr 04 2010 Frank Kober <emuse@mandriva.org> 0.9.10-2mdv2010.1
++ Revision: 531440
+- fix Requires
+
+* Sun Apr 04 2010 Frank Kober <emuse@mandriva.org> 0.9.10-1mdv2010.1
++ Revision: 531217
+- more group tag fixes, better dox build
+- fixed lib path in Makefile
+- drop patch0, install doxygen doc, fix BR
+
+  + Sandro Cazzaniga <kharec@mandriva.org>
+    - fix group
+    - import faust
+
+
