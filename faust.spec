@@ -1,4 +1,4 @@
-
+%define debug_package	%{nil}
 %define name    faust
 %define version 0.9.46
 %define release 1
