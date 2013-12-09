@@ -11,6 +11,7 @@ Group:          Development/Other
 License:        GPLv2+ and BSD
 URL:            http://faust.grame.fr/
 Source:         http://downloads.sourceforge.net/faudiostream/%{name}-%{version}.tar.gz
+Source1:	faust.rpmlintrc
 Patch0:         faust-0.9.46-unistd-gcc47.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -77,6 +78,21 @@ for KDE's Kate/Kwrite.
 %prep
 %setup -q
 %patch0 -p1
+
+
+# For installation in the correct location and for preserving timestamps:
+# The Makefile normally puts noarch files in $prefix/lib. We change
+# this to $prefix/share
+# Also don't build the osclib until upstream supports shared libs
+#	-e '/osclib/d'				\
+sed -i	-e 's|/lib/|/share/|g'			\
+	-e 's| -r | -pr |'			\
+	-e 's| -m | -pm |'			\
+	Makefile
+sed -i 's|/lib|/share|g' compiler/parser/enrobage.cpp
+sed -i 's|install |install -pm 755 |' tools/faust2appls/Makefile
+
+
 iconv -f iso8859-1 -t utf8 examples/README -o tmpfile
 
 %build
@@ -95,7 +111,7 @@ mkdir -p %{buildroot}%{_datadir}/compiler/doc
 mkdir -p %{buildroot}%{_datadir}/lib/faust
 touch -r examples/README tmpfile
 mv -f tmpfile examples/README
-make install DESTDIR=%{buildroot} PREFIX=%{_prefix}
+make install DESTDIR=%{buildroot} PREFIX=%{_prefix} LIBDIR=%{_libdir} INCLUDEDIR=%{_includedir}
 
 mv documentation/faust-quick-reference-src/illustrations/ documentation
 rm -fr documentation/faust-quick-reference-src
@@ -115,8 +131,8 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%{_prefix}/lib/%{name}
 %{_bindir}/%{name}
+%{_datadir}/%{name}
 %doc COPYING README examples
 
 %files doc
