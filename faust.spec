@@ -1,6 +1,6 @@
 %define debug_package	%{nil}
 %define name    faust
-%define version 0.9.46
+%define version 0.9.65
 %define release 1
 
 Name:           %{name}
@@ -12,7 +12,6 @@ License:        GPLv2+ and BSD
 URL:            http://faust.grame.fr/
 Source:         http://downloads.sourceforge.net/faudiostream/%{name}-%{version}.tar.gz
 Source1:	faust.rpmlintrc
-Patch0:         faust-0.9.46-unistd-gcc47.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  doxygen
@@ -77,7 +76,6 @@ for KDE's Kate/Kwrite.
 
 %prep
 %setup -q
-%patch0 -p1
 
 
 # For installation in the correct location and for preserving timestamps:
