@@ -130,7 +130,10 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root,-)
 %{_bindir}/%{name}
+%{_bindir}/%{name}path
+%{_bindir}/%{name}optflags
 %{_datadir}/%{name}
+%{_includedir}/%{name}
 %doc COPYING README examples
 
 %files doc
