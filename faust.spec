@@ -125,7 +125,7 @@ cp -a syntax-highlighting/%{name}.xml \
     %{buildroot}%{_datadir}/kde4/apps/katepart/syntax/
 
 # remove the android lib
-rm -fr %{buildroot}%{_datadir}/faust/android/lib
+rm -fr %{buildroot}%{_datadir}/faust/android/libs
 
 %clean
 rm -rf %{buildroot}
