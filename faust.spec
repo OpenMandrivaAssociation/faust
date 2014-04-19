@@ -1,26 +1,20 @@
-%define debug_package	%{nil}
-%define name    faust
-%define version 0.9.65
-%define release 1
+%define debug_package %{nil}
 
-Name:           %{name}
-Version:        %{version}
-Release:        %{release}
-Summary:        Faust AUdio Stream (real-time audio signal processing language)
-Group:          Development/Other
-License:        GPLv2+ and BSD
-URL:            http://faust.grame.fr/
-Source:         http://downloads.sourceforge.net/faudiostream/%{name}-%{version}.tar.gz
+Summary:	Faust AUdio Stream (real-time audio signal processing language)
+Name:		faust
+Version:	0.9.65
+Release:	2
+License:	GPLv2+ and BSD
+Group:		Development/Other
+Url:		http://faust.grame.fr/
+Source0:	http://downloads.sourceforge.net/faudiostream/%{name}-%{version}.tar.gz
 Source1:	faust.rpmlintrc
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-
-BuildRequires:  doxygen
-BuildRequires:  graphviz
-
-Requires:       glitz
-Suggests:       jackit
-Suggests:       csound
-Suggests:       octave
+BuildRequires:	doxygen
+BuildRequires:	graphviz
+Requires:	glitz
+Suggests:	jackit
+Suggests:	csound
+Suggests:	octave
 
 %description
 Faust AUdio STreams is a functional programming language for real-time audio
@@ -36,60 +30,83 @@ with (and sometimes outperform) hand-written C code.
 
 Programming with FAUST is somehow like working with electronic circuits and
 signals. A FAUST program is a list of definitions that defines a signal
-processor block-diagram : a piece of code that produces output signals
+processor block-diagram: a piece of code that produces output signals
 according to its input signals (and maybe some user interface parameters)
 
+%files
+%doc COPYING README examples
+%{_bindir}/%{name}
+%{_bindir}/%{name}path
+%{_bindir}/%{name}optflags
+%{_libdir}/%{name}
+%{_includedir}/%{name}
+
+#----------------------------------------------------------------------------
+
 %package doc
-Summary:    Documentation for %{name}
-Group:      Development/Other
-License:    GPLv2+
-Requires:   %{name} = %{version}-%{release}
-BuildArch: noarch
+Summary:	Documentation for %{name}
+License:	GPLv2+
+Group:		Development/Other
+BuildArch:	noarch
 
 %description doc
 Faust AUdio STreams is a functional programming language for real-time audio
 signal processing. This package provides documentation files to help with
 writing programs with faust.
 
+%files doc
+%doc documentation/*
+%doc dox
+
+#----------------------------------------------------------------------------
+
 %package tools
-Summary:    3rd party tools written for %{name}
-Group:      Development/Other
-License:    GPLv2+
-Requires:   %{name} = %{version}-%{release}
+Summary:	3rd party tools written for %{name}
+License:	GPLv2+
+Group:		Development/Other
+Requires:	%{name} = %{EVRD}
 
 %description tools
 Faust AUdio STreams is a functional programming language for real-time audio
 signal processing. These additional tools are provided by various contributors
 to help the building process of applications and plugins with Faust.
 
+%files tools
+%doc tools/README README.supercollider README.appls
+%{_bindir}/%{name}2*
+
+#----------------------------------------------------------------------------
+
 %package kate
-Summary:    Kate/Kwrite plugin for %{name}
-Group:      Development/Other
-License:    GPLv2+
-Requires:   %{name} = %{version}-%{release}
-Requires:   kdesdk4
+Summary:	Kate/Kwrite plugin for %{name}
+License:	GPLv2+
+Group:		Development/Other
+Requires:	%{name} = %{EVRD}
 
 %description kate
 Faust AUdio STreams is a functional programming language for real-time audio
 signal processing. This package provides Faust code syntax highlighting support
 for KDE's Kate/Kwrite.
 
+%files kate
+%doc syntax-highlighting/README
+%{_datadir}/kde4/apps/katepart/syntax/%{name}.xml
+
+#----------------------------------------------------------------------------
+
 %prep
 %setup -q
-
-
 # For installation in the correct location and for preserving timestamps:
 # The Makefile normally puts noarch files in $prefix/lib. We change
 # this to $prefix/share
 # Also don't build the osclib until upstream supports shared libs
 #	-e '/osclib/d'				\
-sed -i	-e 's|/lib/|/share/|g'			\
+sed -i	-e 's|/lib/|/%{_lib}/|g'			\
 	-e 's| -r | -pr |'			\
 	-e 's| -m | -pm |'			\
 	Makefile
-sed -i 's|/lib|/share|g' compiler/parser/enrobage.cpp
+sed -i 's|/lib|/%{_lib}|g' compiler/parser/enrobage.cpp
 sed -i 's|install |install -pm 755 |' tools/faust2appls/Makefile
-
 
 iconv -f iso8859-1 -t utf8 examples/README -o tmpfile
 
@@ -102,11 +119,7 @@ sed -i -e "s/GENERATE_LATEX         = YES/GENERATE_LATEX          = NO/g" compil
 %make doc PREFIX=%{_prefix}
 
 %install
-rm -rf %{buildroot}
 mkdir -p %{buildroot}%{_bindir}
-mkdir -p %{buildroot}%{_datadir}/doc/faust
-mkdir -p %{buildroot}%{_datadir}/compiler/doc
-mkdir -p %{buildroot}%{_datadir}/lib/faust
 touch -r examples/README tmpfile
 mv -f tmpfile examples/README
 make install DESTDIR=%{buildroot} PREFIX=%{_prefix} LIBDIR=%{_libdir} INCLUDEDIR=%{_includedir}
@@ -125,86 +138,7 @@ cp -a syntax-highlighting/%{name}.xml \
     %{buildroot}%{_datadir}/kde4/apps/katepart/syntax/
 
 # remove the android lib
-rm -fr %{buildroot}%{_datadir}/faust/android/libs
-
-%clean
-rm -rf %{buildroot}
-
-%files
-%defattr(-,root,root,-)
-%{_bindir}/%{name}
-%{_bindir}/%{name}path
-%{_bindir}/%{name}optflags
-%{_datadir}/%{name}
-%{_includedir}/%{name}
-%doc COPYING README examples
-
-%files doc
-%defattr(-,root,root,-)
-%doc documentation/*
-%doc dox
-
-%files tools
-%defattr(-,root,root,-)
-%doc tools/README README.supercollider README.appls
-%{_bindir}/%{name}2*
-
-%files kate
-%defattr(-,root,root,-)
-%doc syntax-highlighting/README
-%{_datadir}/kde4/apps/katepart/syntax/%{name}.xml
-
-
-
-
-%changelog
-* Sat Apr 07 2012 Frank Kober <emuse@mandriva.org> 0.9.46-1
-+ Revision: 789769
-- new version
-  o add patch to fix build with gcc 4.7
-
-* Sun Oct 23 2011 Frank Kober <emuse@mandriva.org> 0.9.43-1
-+ Revision: 705774
-- new version 0.9.43
-
-* Fri Jan 07 2011 Thierry Vignaud <tv@mandriva.org> 0.9.30-2mdv2011.0
-+ Revision: 629718
-- make doc subpackage noarch
-
-* Sun Nov 28 2010 Frank Kober <emuse@mandriva.org> 0.9.30-1mdv2011.0
-+ Revision: 602499
-- new version 0.9.30
-  o fix graphviz BR to properly generate doc
-
-* Thu Jul 15 2010 Frank Kober <emuse@mandriva.org> 0.9.24-1mdv2011.0
-+ Revision: 553554
-- new version 0.9.24
-
-* Thu Apr 29 2010 Luis Daniel Lucio Quiroz <dlucio@mandriva.org> 0.9.10-5mdv2010.1
-+ Revision: 540688
-- Fix faulst-kate requires
-
-* Mon Apr 12 2010 Frank Kober <emuse@mandriva.org> 0.9.10-4mdv2010.1
-+ Revision: 533722
-- build html dox only, fix doc separation from main pack
-- fix documentation path
-
-* Sun Apr 04 2010 Frank Kober <emuse@mandriva.org> 0.9.10-3mdv2010.1
-+ Revision: 531479
-- install faust source lib in /lib even on x86_64
-
-* Sun Apr 04 2010 Frank Kober <emuse@mandriva.org> 0.9.10-2mdv2010.1
-+ Revision: 531440
-- fix Requires
-
-* Sun Apr 04 2010 Frank Kober <emuse@mandriva.org> 0.9.10-1mdv2010.1
-+ Revision: 531217
-- more group tag fixes, better dox build
-- fixed lib path in Makefile
-- drop patch0, install doxygen doc, fix BR
-
-  + Sandro Cazzaniga <kharec@mandriva.org>
-    - fix group
-    - import faust
-
+rm -fr %{buildroot}%{_libdir}/faust/android/
+rm -fr %{buildroot}%{_libdir}/faust/iOS/
+rm -fr %{buildroot}%{_libdir}/faust/iPhone/
 
