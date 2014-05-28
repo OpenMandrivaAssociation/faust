@@ -1,13 +1,14 @@
 %define debug_package %{nil}
 
 Summary:	Faust AUdio Stream (real-time audio signal processing language)
+
 Name:		faust
-Version:	0.9.65
-Release:	2
+Version:	0.9.67
+Release:	1
 License:	GPLv2+ and BSD
 Group:		Development/Other
 Url:		http://faust.grame.fr/
-Source0:	http://downloads.sourceforge.net/faudiostream/%{name}-%{version}.tar.gz
+Source0:	http://sourceforge.net/projects/faudiostream/files/%{name}-%{version}.zip
 Source1:	faust.rpmlintrc
 BuildRequires:	doxygen
 BuildRequires:	graphviz
@@ -45,6 +46,7 @@ according to its input signals (and maybe some user interface parameters)
 
 %package doc
 Summary:	Documentation for %{name}
+
 License:	GPLv2+
 Group:		Development/Other
 BuildArch:	noarch
@@ -62,6 +64,7 @@ writing programs with faust.
 
 %package tools
 Summary:	3rd party tools written for %{name}
+
 License:	GPLv2+
 Group:		Development/Other
 Requires:	%{name} = %{EVRD}
@@ -79,6 +82,7 @@ to help the building process of applications and plugins with Faust.
 
 %package kate
 Summary:	Kate/Kwrite plugin for %{name}
+
 License:	GPLv2+
 Group:		Development/Other
 Requires:	%{name} = %{EVRD}
@@ -141,4 +145,5 @@ cp -a syntax-highlighting/%{name}.xml \
 rm -fr %{buildroot}%{_libdir}/faust/android/
 rm -fr %{buildroot}%{_libdir}/faust/iOS/
 rm -fr %{buildroot}%{_libdir}/faust/iPhone/
+
 

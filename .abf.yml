@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   faust-0.9.65.tar.gz: b9f37cafe4a49652dc40690898c4c6b9186d65d1
+sources:
+  faust-0.9.67.zip: dce57ff33a8a35b23ab029946ae5c920c401b7f5
