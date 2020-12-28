@@ -12,6 +12,7 @@ Source0:	https://github.com/grame-cncm/faust/releases/download/%{version}/%{name
 Source1:	faust.rpmlintrc
 BuildRequires:	doxygen
 BuildRequires:	graphviz
+BuildRequires:	cmake
 Requires:	glitz
 Suggests:	jackit
 Suggests:	csound
@@ -100,46 +101,14 @@ for KDE's Kate/Kwrite.
 
 %prep
 %setup -q
-# For installation in the correct location and for preserving timestamps:
-# The Makefile normally puts noarch files in $prefix/lib. We change
-# this to $prefix/share
-# Also don't build the osclib until upstream supports shared libs
-#	-e '/osclib/d'				\
-sed -i	-e 's|/lib/|/%{_lib}/|g'			\
-	-e 's| -r | -pr |'			\
-	-e 's| -m | -pm |'			\
-	Makefile
-sed -i 's|/lib|/%{_lib}|g' compiler/parser/enrobage.cpp
-sed -i 's|install |install -pm 755 |' tools/faust2appls/Makefile
-
-iconv -f iso8859-1 -t utf8 examples/README -o tmpfile
 
 %build
-%make PREFIX=%{_prefix}
+%cmake
 
-#limit doxy generation to html:
-sed -i -e "s/GENERATE_LATEX         = YES/GENERATE_LATEX          = NO/g" compiler/Doxyfile
-
-%make doc PREFIX=%{_prefix}
+%make_build
 
 %install
-mkdir -p %{buildroot}%{_bindir}
-touch -r examples/README tmpfile
-mv -f tmpfile examples/README
-make install DESTDIR=%{buildroot} PREFIX=%{_prefix} LIBDIR=%{_libdir} INCLUDEDIR=%{_includedir}
-
-mv documentation/faust-quick-reference-src/illustrations/ documentation
-rm -fr documentation/faust-quick-reference-src
-
-cp -a tools/%{name}2sc-*/%{name}2sc %{buildroot}%{_bindir}
-mv tools/%{name}2sc-*/README README.supercollider
-
-cp -a tools/%{name}2appls/%{name}2* %{buildroot}%{_bindir}
-mv tools/%{name}2appls/README README.appls
-
-mkdir -p %{buildroot}%{_datadir}/kde4/apps/katepart/syntax/
-cp -a syntax-highlighting/%{name}.xml \
-    %{buildroot}%{_datadir}/kde4/apps/katepart/syntax/
+%make_install -C build
 
 # remove the android lib
 rm -fr %{buildroot}%{_libdir}/faust/android/
