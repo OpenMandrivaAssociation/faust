@@ -108,6 +108,8 @@ cd build
 
 %make_build
 
+cd..
+
 %install
 %make_install -C build
 
