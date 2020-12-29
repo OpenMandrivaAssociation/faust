@@ -103,12 +103,12 @@ for KDE's Kate/Kwrite.
 %setup -q
 
 %build
-cd build
+pushd build
 %cmake
 
 %make_build
 
-cd..
+popd
 
 %install
 %make_install -C build
