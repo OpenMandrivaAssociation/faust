@@ -13,6 +13,7 @@ Source1:	faust.rpmlintrc
 BuildRequires:	doxygen
 BuildRequires:	graphviz
 BuildRequires:	cmake
+BuildRequires:  git
 Requires:	glitz
 Suggests:	jackit
 Suggests:	csound
