@@ -123,6 +123,6 @@ cp syntax-highlighting/faust.xml %{buildroot}%{_datadir}/katepart/syntax
 rm -fr %{buildroot}%{_datadir}/faust/iOS/
 rm -fr %{buildroot}%{_datadir}/faust/iPhone/
 # and the unneeded android lib too
-rm -fr %{buildroot}%{_libdir}/faust/android/
+rm -fr %{buildroot}%{_datadir}/faust/android/
 # and static libs
 rm -fr %{buildroot}%{_prefix}/lib
