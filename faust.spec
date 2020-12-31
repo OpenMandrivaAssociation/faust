@@ -13,6 +13,7 @@ Source1:	faust.rpmlintrc
 BuildRequires:	doxygen
 BuildRequires:	graphviz
 BuildRequires:	cmake
+BuildRequires:	ninja
 BuildRequires:  git
 Requires:	glitz
 Suggests:	jackit
@@ -37,12 +38,17 @@ processor block-diagram: a piece of code that produces output signals
 according to its input signals (and maybe some user interface parameters)
 
 %files
-%doc COPYING README examples
+%doc examples
 %{_bindir}/%{name}
 %{_bindir}/%{name}path
 %{_bindir}/%{name}optflags
-%{_libdir}/%{name}
 %{_includedir}/%{name}
+%{_datadir}/%{name}
+%{_mandir}/man1/*.1*
+%{_bindir}/encoderunitypackage
+%{_bindir}/filename2ident
+%{_bindir}/sound2reader
+%{_bindir}/usage.sh
 
 #----------------------------------------------------------------------------
 
@@ -60,7 +66,6 @@ writing programs with faust.
 
 %files doc
 %doc documentation/*
-%doc dox
 
 #----------------------------------------------------------------------------
 
@@ -77,7 +82,6 @@ signal processing. These additional tools are provided by various contributors
 to help the building process of applications and plugins with Faust.
 
 %files tools
-%doc tools/README README.supercollider README.appls
 %{_bindir}/%{name}2*
 
 #----------------------------------------------------------------------------
@@ -95,28 +99,30 @@ signal processing. This package provides Faust code syntax highlighting support
 for KDE's Kate/Kwrite.
 
 %files kate
-%doc syntax-highlighting/README
-%{_datadir}/kde4/apps/katepart/syntax/%{name}.xml
+%doc syntax-highlighting/README.md
+%{_datadir}/katepart/syntax/%{name}.xml
 
 #----------------------------------------------------------------------------
 
 %prep
-%setup -q
+%autosetup -p1
+cd build
+%cmake -G Ninja
 
 %build
-pushd build
-%cmake
-
-%make_build
-
-popd
+%ninja_build -C build/build
 
 %install
-%make_install -C build
+%ninja_install -C build/build
 
-# remove the android lib
+# install kate syntax highlighter
+mkdir -p %{buildroot}%{_datadir}/katepart/syntax
+cp syntax-highlighting/faust.xml %{buildroot}%{_datadir}/katepart/syntax
+
+# remove NaziOS crap
+rm -fr %{buildroot}%{_datadir}/faust/iOS/
+rm -fr %{buildroot}%{_datadir}/faust/iPhone/
+# and the unneeded android lib too
 rm -fr %{buildroot}%{_libdir}/faust/android/
-rm -fr %{buildroot}%{_libdir}/faust/iOS/
-rm -fr %{buildroot}%{_libdir}/faust/iPhone/
-
-
+# and static libs
+rm -fr %{buildroot}%{_prefix}/lib
