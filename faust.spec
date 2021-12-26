@@ -3,7 +3,7 @@
 Summary:	Faust AUdio Stream (real-time audio signal processing language)
 
 Name:		faust
-Version:	2.27.3
+Version:	2.37.3
 Release:	1
 License:	GPLv2+ and BSD
 Group:		Development/Other
