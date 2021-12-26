@@ -1,9 +1,7 @@
-%define debug_package %{nil}
-
 Summary:	Faust AUdio Stream (real-time audio signal processing language)
 
 Name:		faust
-Version:	2.27.2
+Version:	2.37.3
 Release:	1
 License:	GPLv2+ and BSD
 Group:		Development/Other
@@ -42,6 +40,7 @@ according to its input signals (and maybe some user interface parameters)
 %{_bindir}/%{name}
 %{_bindir}/%{name}path
 %{_bindir}/%{name}optflags
+%{_bindir}/faustremote
 %{_includedir}/%{name}
 %{_datadir}/%{name}
 %{_mandir}/man1/*.1*
