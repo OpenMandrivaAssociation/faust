@@ -38,6 +38,7 @@ according to its input signals (and maybe some user interface parameters)
 %files
 %doc examples
 %{_bindir}/%{name}
+%{_bindir}/%{name}-config
 %{_bindir}/%{name}path
 %{_bindir}/%{name}optflags
 %{_bindir}/faustremote
