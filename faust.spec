@@ -1,11 +1,11 @@
 Summary:	Faust AUdio Stream (real-time audio signal processing language)
 
 Name:		faust
-Version:	2.70.3
+Version:	2.74.6
 Release:	1
 License:	GPLv2+ and BSD
 Group:		Development/Other
-Url:		http://faust.grame.fr/
+Url:		https://faust.grame.fr/
 Source0:	https://github.com/grame-cncm/faust/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:	faust.rpmlintrc
 BuildRequires:	doxygen
