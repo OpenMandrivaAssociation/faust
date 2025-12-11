@@ -16,10 +16,11 @@ BuildOption:	-DINCLUDE_DYNAMIC:BOOL=ON
 BuildOption:	-DINCLUDE_ITP:BOOL=ON
 BuildOption:	-DINCLUDE_STATIC:BOOL=OFF
 BuildOption:	-DLLVM_LINK_STATIC:BOOL=OFF
+BuildRequires:	cmake
+BuildRequires:	cmake(LLVM)
 BuildRequires:	doxygen
 BuildRequires:	graphviz
-BuildRequires:  git
-BuildRequires:	cmake(LLVM)
+BuildRequires:  git-core
 Requires:	glitz
 Suggests:	jackit
 Suggests:	csound
