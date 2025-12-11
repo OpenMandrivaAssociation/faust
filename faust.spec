@@ -2,17 +2,24 @@ Summary:	Faust AUdio Stream (real-time audio signal processing language)
 
 Name:		faust
 Version:	2.81.10
-Release:	1
+Release:	2
 License:	GPLv2+ and BSD
 Group:		Development/Other
 Url:		https://faust.grame.fr/
 Source0:	https://github.com/grame-cncm/faust/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:	faust.rpmlintrc
+BuildSystem:	cmake
+BuildOption:	-S ../build
+BuildOption:	-C ../build/backends/all.cmake
+BuildOption:	-C ../build/targets/all.cmake
+BuildOption:	-DINCLUDE_DYNAMIC:BOOL=ON
+BuildOption:	-DINCLUDE_ITP:BOOL=ON
+BuildOption:	-DINCLUDE_STATIC:BOOL=OFF
+BuildOption:	-DLLVM_LINK_STATIC:BOOL=OFF
 BuildRequires:	doxygen
 BuildRequires:	graphviz
-BuildRequires:	cmake
-BuildRequires:	ninja
 BuildRequires:  git
+BuildRequires:	cmake(LLVM)
 Requires:	glitz
 Suggests:	jackit
 Suggests:	csound
@@ -71,7 +78,6 @@ writing programs with faust.
 
 %package tools
 Summary:	3rd party tools written for %{name}
-
 License:	GPLv2+
 Group:		Development/Other
 Requires:	%{name} = %{EVRD}
@@ -88,7 +94,6 @@ to help the building process of applications and plugins with Faust.
 
 %package kate
 Summary:	Kate/Kwrite plugin for %{name}
-
 License:	GPLv2+
 Group:		Development/Other
 Requires:	%{name} = %{EVRD}
@@ -104,17 +109,7 @@ for KDE's Kate/Kwrite.
 
 #----------------------------------------------------------------------------
 
-%prep
-%autosetup -p1
-cd build
-%cmake -G Ninja
-
-%build
-%ninja_build -C build/build
-
-%install
-%ninja_install -C build/build
-
+%install -a
 # install kate syntax highlighter
 mkdir -p %{buildroot}%{_datadir}/katepart/syntax
 cp syntax-highlighting/faust.xml %{buildroot}%{_datadir}/katepart/syntax
