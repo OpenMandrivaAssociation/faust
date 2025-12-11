@@ -18,6 +18,7 @@ BuildOption:	-DINCLUDE_STATIC:BOOL=OFF
 BuildOption:	-DLLVM_LINK_STATIC:BOOL=OFF
 BuildRequires:	cmake
 BuildRequires:	cmake(LLVM)
+BuildRequires:	llvm-static-devel
 BuildRequires:	doxygen
 BuildRequires:	graphviz
 BuildRequires:  git-core
