@@ -18,11 +18,14 @@ BuildOption:	-DINCLUDE_STATIC:BOOL=OFF
 BuildOption:	-DLLVM_LINK_STATIC:BOOL=OFF
 BuildRequires:	cmake
 BuildRequires:	cmake(LLVM)
+BuildRequires:	cmake(zstd)
 BuildRequires:	llvm-static-devel
+BuildRequires:	llvm-polly-devel
 BuildRequires:	doxygen
 BuildRequires:	graphviz
 BuildRequires:  git-core
 BuildRequires:	pkgconfig(libmicrohttpd)
+BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(z3)
 Requires:	glitz
 Suggests:	jackit
