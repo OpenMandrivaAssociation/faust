@@ -22,6 +22,8 @@ BuildRequires:	llvm-static-devel
 BuildRequires:	doxygen
 BuildRequires:	graphviz
 BuildRequires:  git-core
+BuildRequires:	pkgconfig(libmicrohttpd)
+BuildRequires:	pkgconfig(z3)
 Requires:	glitz
 Suggests:	jackit
 Suggests:	csound
