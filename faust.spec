@@ -19,6 +19,7 @@ BuildOption:	-DLLVM_LINK_STATIC:BOOL=OFF
 BuildRequires:	cmake
 BuildRequires:	cmake(LLVM)
 BuildRequires:	cmake(zstd)
+BuildRequires:	pkgconfig(libzstd)
 BuildRequires:	llvm-static-devel
 BuildRequires:	llvm-polly-devel
 BuildRequires:	doxygen
