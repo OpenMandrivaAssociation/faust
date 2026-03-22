@@ -35,6 +35,7 @@ BuildRequires:	cmake
 BuildRequires:	doxygen
 BuildRequires:	git-core
 BuildRequires:	graphviz
+BuildRequires:	make
 BuildRequires:	cmake(LLVM)
 BuildRequires:	cmake(zstd)
 BuildRequires:	llvm-polly-devel
