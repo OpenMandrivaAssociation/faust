@@ -1,0 +1,242 @@
+diff -rupN faust-2.85.5.old/architecture/android/gradlew faust-2.85.5/architecture/android/gradlew
+--- faust-2.85.5.old/architecture/android/gradlew	2026-03-20 09:58:57.000000000 +0100
++++ faust-2.85.5/architecture/android/gradlew	2026-03-22 16:46:54.882949735 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ 
+ ##############################################################################
+ ##
+diff -rupN faust-2.85.5.old/architecture/clap/faust-hot-reload.py faust-2.85.5/architecture/clap/faust-hot-reload.py
+--- faust-2.85.5.old/architecture/clap/faust-hot-reload.py	2026-03-20 09:58:57.000000000 +0100
++++ faust-2.85.5/architecture/clap/faust-hot-reload.py	2026-03-22 16:46:54.883195452 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python
+ #created by Facundo Franchino
+ """
+ Faust Hot Reload GUI
+@@ -244,4 +244,4 @@ class FaustHotReloadGUI:
+ 
+ if __name__ == "__main__":
+     app = FaustHotReloadGUI()
+-    app.run()
+\ Manca newline alla fine del file
++    app.run()
+diff -rupN faust-2.85.5.old/architecture/smartKeyboard/android/gradlew faust-2.85.5/architecture/smartKeyboard/android/gradlew
+--- faust-2.85.5.old/architecture/smartKeyboard/android/gradlew	2026-03-20 09:58:57.000000000 +0100
++++ faust-2.85.5/architecture/smartKeyboard/android/gradlew	2026-03-22 16:46:54.883361507 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ 
+ ##############################################################################
+ ##
+diff -rupN faust-2.85.5.old/architecture/wwise/orchestrator.py faust-2.85.5/architecture/wwise/orchestrator.py
+--- faust-2.85.5.old/architecture/wwise/orchestrator.py	2026-03-20 09:58:57.000000000 +0100
++++ faust-2.85.5/architecture/wwise/orchestrator.py	2026-03-22 16:46:54.883530708 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python
+ """
+ The Faust2Wwise conversion process is applied with the following steps:
+     Preliminary/Preparation Step: Setup and Validation
+@@ -330,4 +330,4 @@ class Faust2WwiseOrchestrator:
+         self.build_plugin()             # step 5
+         self.cleanup()                  # outro
+         
+-        self.cfg.print_summary()        # print summary info
+\ Manca newline alla fine del file
++        self.cfg.print_summary()        # print summary info
+diff -rupN faust-2.85.5.old/tests/impulse-tests/tools/impulseasc.js faust-2.85.5/tests/impulse-tests/tools/impulseasc.js
+--- faust-2.85.5.old/tests/impulse-tests/tools/impulseasc.js	2026-03-20 09:58:57.000000000 +0100
++++ faust-2.85.5/tests/impulse-tests/tools/impulseasc.js	2026-03-22 16:46:54.883716301 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env node
++#!/usr/bin/node
+ 
+ /*
+  * Experimental impulse runner for the Faust AssemblyScript backend.
+diff -rupN faust-2.85.5.old/tests/ui-export/check_html.py faust-2.85.5/tests/ui-export/check_html.py
+--- faust-2.85.5.old/tests/ui-export/check_html.py	2026-03-20 09:58:57.000000000 +0100
++++ faust-2.85.5/tests/ui-export/check_html.py	2026-03-22 16:46:54.883879931 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python
+ """
+ Simple HTML sanity check:
+ - Ensures presence of key widget classes and data attributes.
+diff -rupN faust-2.85.5.old/tests/ui-export/check_svg.py faust-2.85.5/tests/ui-export/check_svg.py
+--- faust-2.85.5.old/tests/ui-export/check_svg.py	2026-03-20 09:58:57.000000000 +0100
++++ faust-2.85.5/tests/ui-export/check_svg.py	2026-03-22 16:46:54.884010369 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python
+ """
+ Simple SVG sanity check:
+ - Ensures presence of key widget classes and data attributes.
+diff -rupN faust-2.85.5.old/tools/faust2appls/check-au.sh faust-2.85.5/tools/faust2appls/check-au.sh
+--- faust-2.85.5.old/tools/faust2appls/check-au.sh	2026-03-20 09:58:57.000000000 +0100
++++ faust-2.85.5/tools/faust2appls/check-au.sh	2026-03-22 16:46:54.884141358 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ failures=0
+ for i in `seq 0 $1`; do
+ 	auvaltool -v aufx cabl Gram 1> /dev/null 2> /dev/null
+diff -rupN faust-2.85.5.old/tools/faust2appls/faust2atomsnippets faust-2.85.5/tools/faust2appls/faust2atomsnippets
+--- faust-2.85.5.old/tools/faust2appls/faust2atomsnippets	2026-03-20 09:58:57.000000000 +0100
++++ faust-2.85.5/tools/faust2appls/faust2atomsnippets	2026-03-22 16:46:54.884328493 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python
+ 
+ # ---------------------- faust2atomsnippets -----------------------
+ # Usage: `faust2atomsnippets *.lib > faust-library.cson`
+diff -rupN faust-2.85.5.old/tools/faust2appls/faust2cpalrust faust-2.85.5/tools/faust2appls/faust2cpalrust
+--- faust-2.85.5.old/tools/faust2appls/faust2cpalrust	2026-03-20 09:58:57.000000000 +0100
++++ faust-2.85.5/tools/faust2appls/faust2cpalrust	2026-03-22 16:48:22.910633641 +0100
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env bash
++#! /usr/bin/bash
+ set -e
+ 
+ #####################################################################
+diff -rupN faust-2.85.5.old/tools/faust2appls/faust2jackrust faust-2.85.5/tools/faust2appls/faust2jackrust
+--- faust-2.85.5.old/tools/faust2appls/faust2jackrust	2026-03-20 09:58:57.000000000 +0100
++++ faust-2.85.5/tools/faust2appls/faust2jackrust	2026-03-22 16:48:39.590194626 +0100
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env bash
++#! /usr/bin/bash
+ set -e
+ 
+ #####################################################################
+diff -rupN faust-2.85.5.old/tools/faust2appls/faust2md faust-2.85.5/tools/faust2appls/faust2md
+--- faust-2.85.5.old/tools/faust2appls/faust2md	2026-03-20 09:58:57.000000000 +0100
++++ faust-2.85.5/tools/faust2appls/faust2md	2026-03-22 16:46:54.884485942 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python
+ #
+ # ---------------------- faust2md ----------------------
+ # Usage: `faust2md [-t 4] [-c] [-f] foo.dsp > foo.md`
+diff -rupN faust-2.85.5.old/tools/faust2appls/faust2portaudiorust faust-2.85.5/tools/faust2appls/faust2portaudiorust
+--- faust-2.85.5.old/tools/faust2appls/faust2portaudiorust	2026-03-20 09:58:57.000000000 +0100
++++ faust-2.85.5/tools/faust2appls/faust2portaudiorust	2026-03-22 16:46:54.884635366 +0100
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env bash
++#! /usr/bin/bash
+ set -e
+ 
+ #####################################################################
+diff -rupN faust-2.85.5.old/tools/faust2appls/faust2sc.py faust-2.85.5/tools/faust2appls/faust2sc.py
+--- faust-2.85.5.old/tools/faust2appls/faust2sc.py	2026-03-20 09:58:57.000000000 +0100
++++ faust-2.85.5/tools/faust2appls/faust2sc.py	2026-03-22 16:46:54.884773619 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python
+ # Compile a faust file as a SuperCollider help file
+ import os
+ import sys
+diff -rupN faust-2.85.5.old/tools/faust2appls/faust2sublimecompletions faust-2.85.5/tools/faust2appls/faust2sublimecompletions
+--- faust-2.85.5.old/tools/faust2appls/faust2sublimecompletions	2026-03-20 09:58:57.000000000 +0100
++++ faust-2.85.5/tools/faust2appls/faust2sublimecompletions	2026-03-22 16:46:54.884898406 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python
+ 
+ # ---------------------- faust2sublimecompletions -----------------------
+ # Usage: `faust2sublimecompletions *.lib > faust.sublime-completions`
+diff -rupN faust-2.85.5.old/tools/faust2appls/faust2tidalcycles faust-2.85.5/tools/faust2appls/faust2tidalcycles
+--- faust-2.85.5.old/tools/faust2appls/faust2tidalcycles	2026-03-20 09:58:57.000000000 +0100
++++ faust-2.85.5/tools/faust2appls/faust2tidalcycles	2026-03-22 16:46:54.885020097 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python
+ 
+ import os
+ import os.path
+diff -rupN faust-2.85.5.old/tools/faust2appls/faust2wwise.py faust-2.85.5/tools/faust2appls/faust2wwise.py
+--- faust-2.85.5.old/tools/faust2appls/faust2wwise.py	2026-03-20 09:58:57.000000000 +0100
++++ faust-2.85.5/tools/faust2appls/faust2wwise.py	2026-03-22 16:46:54.885163058 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python
+ 
+ # #####################################################################
+ #                                                                     #
+@@ -180,4 +180,4 @@ if __name__ == "__main__":
+ 
+             print("Exiting faust2wwise with error code 1 : Missing or inaccessible environment variables or system calls.")
+             print_message_on_fail()
+-            sys.exit(1)
+\ Manca newline alla fine del file
++            sys.exit(1)
+diff -rupN faust-2.85.5.old/tools/faust2clap/faust2clap.py faust-2.85.5/tools/faust2clap/faust2clap.py
+--- faust-2.85.5.old/tools/faust2clap/faust2clap.py	2026-03-20 09:58:57.000000000 +0100
++++ faust-2.85.5/tools/faust2clap/faust2clap.py	2026-03-22 16:46:54.885277566 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python
+ import sys #cli arguments
+ import os #file path manipulation
+ import subprocess #run shell commands
+diff -rupN faust-2.85.5.old/tools/faust2sc-1.0.0/faust2sc faust-2.85.5/tools/faust2sc-1.0.0/faust2sc
+--- faust-2.85.5.old/tools/faust2sc-1.0.0/faust2sc	2026-03-20 09:58:57.000000000 +0100
++++ faust-2.85.5/tools/faust2sc-1.0.0/faust2sc	2026-03-22 16:46:54.885395450 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # ======================================================================
+ # faust2sc - Generate language modules from Faust XML.
+ # Copyright (C) 2005-2008 Stefan Kersten
+diff -rupN faust-2.85.5.old/tools/physicalModeling/inkscape2scad/paths2openscad.py faust-2.85.5/tools/physicalModeling/inkscape2scad/paths2openscad.py
+--- faust-2.85.5.old/tools/physicalModeling/inkscape2scad/paths2openscad.py	2026-03-20 09:58:57.000000000 +0100
++++ faust-2.85.5/tools/physicalModeling/inkscape2scad/paths2openscad.py	2026-03-22 16:46:54.885530767 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ 
+ # openscad.py
+ 
+diff -rupN faust-2.85.5.old/tools/physicalModeling/ir2dsp/ir2dspoly.py faust-2.85.5/tools/physicalModeling/ir2dsp/ir2dspoly.py
+--- faust-2.85.5.old/tools/physicalModeling/ir2dsp/ir2dspoly.py	2026-03-20 09:58:57.000000000 +0100
++++ faust-2.85.5/tools/physicalModeling/ir2dsp/ir2dspoly.py	2026-03-22 16:46:54.885665072 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ # -*- coding: utf-8 -*-
+ # id2dsp.py
+ # Copyright Pierre-Amaury Grumiaux, Pierre Jouvelot, Emilio Jesus Gallego Arias,
+@@ -149,4 +149,4 @@ file.write("\nprocess = pm.impulseExcita
+ 
+ file.close();
+ 
+-print(modelName + ".dsp has been successfully created!")
+\ Manca newline alla fine del file
++print(modelName + ".dsp has been successfully created!")
+diff -rupN faust-2.85.5.old/tools/physicalModeling/ir2dsp/ir2dsp.py faust-2.85.5/tools/physicalModeling/ir2dsp/ir2dsp.py
+--- faust-2.85.5.old/tools/physicalModeling/ir2dsp/ir2dsp.py	2026-03-20 09:58:57.000000000 +0100
++++ faust-2.85.5/tools/physicalModeling/ir2dsp/ir2dsp.py	2026-03-22 16:46:54.885760122 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ # -*- coding: utf-8 -*-
+ # id2dsp.py
+ # Copyright Pierre-Amaury Grumiaux, Pierre Jouvelot, Emilio Jesus Gallego Arias,
+@@ -146,4 +146,4 @@ file.write("\nprocess = pm.impulseExcita
+ 
+ file.close();
+ 
+-print(modelName + ".dsp has been successfully created!")
+\ Manca newline alla fine del file
++print(modelName + ".dsp has been successfully created!")
+diff -rupN faust-2.85.5.old/tools/scbuilder/scbuilder faust-2.85.5/tools/scbuilder/scbuilder
+--- faust-2.85.5.old/tools/scbuilder/scbuilder	2026-03-20 09:58:57.000000000 +0100
++++ faust-2.85.5/tools/scbuilder/scbuilder	2026-03-22 16:46:54.885872305 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ #
+ # File:         scbuilder
+ # Contents:     Build script for SuperCollider plugins

@@ -1,1 +1,15 @@
-addFilter("hardcoded-library-path")
+# Bazillion of errors for useless detail
+addFilter("E: incorrect-fsf-address")
+
+# The license files go in %%{_datadir} also for library files
+addFilter("E: outside-libdir-files")
+
+# Thre is no such a thing as "locales-doc": wrong noise
+addFilter("E: no-dependency-on")
+
+# We cannot provide man pages if upstream does not do it already
+addFilter("W: no-manual-page-for-binary")
+
+# The example files are devel stuff (.cpp and  .h files), but are OK
+# in the main package: FAUST is a programming language
+addFilter("W: devel-file-in-non-devel-package")

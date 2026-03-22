@@ -1,36 +1,52 @@
-Summary:	Faust AUdio Stream (real-time audio signal processing language)
+%define		major		2
+%define		libname		%mklibname %{name} %{major}
+%define		major_itp	1
+%define		libname_itp	%mklibname %{name}machine %{major_itp}
+%define		major_http	0
+%define		libname_http	%mklibname httpdfaust %{major_http}
+%define		major_osc	1
+%define		libname_osc	%mklibname oscfaust %{major_osc}
+%define		develname	%mklibname %{name} -d
 
+Summary:	Faust AUdio Stream (real-time audio signal processing language)
 Name:		faust
-Version:	2.81.10
-Release:	2
+Version:	2.85.5
+Release:	1
 License:	GPLv2+ and BSD
 Group:		Development/Other
 Url:		https://faust.grame.fr/
 Source0:	https://github.com/grame-cncm/faust/releases/download/%{version}/%{name}-%{version}.tar.gz
-Source1:	faust.rpmlintrc
+Source100:	faust.rpmlintrc
+Patch0:	faust-2.85.5-fix-env-shebangs.patch
+Patch1:	faust-2.85.5-fix-faustmachine-soname.patch
+
 BuildSystem:	cmake
 BuildOption:	-S ../build
 BuildOption:	-C ../build/backends/all.cmake
 BuildOption:	-C ../build/targets/all.cmake
 BuildOption:	-DINCLUDE_DYNAMIC:BOOL=ON
+BuildOption:	-DINCLUDE_STATIC:BOOL=OFF
 BuildOption:	-DINCLUDE_ITP:BOOL=ON
 BuildOption:	-DINCLUDE_STATIC:BOOL=OFF
 BuildOption:	-DLLVM_LINK_STATIC:BOOL=OFF
+BuildOption:	-DLIBSDIR="%{_lib}"
+
 BuildRequires:	cmake
+BuildRequires:	doxygen
+BuildRequires:	git-core
+BuildRequires:	graphviz
 BuildRequires:	cmake(LLVM)
 BuildRequires:	cmake(zstd)
-BuildRequires:	pkgconfig(libzstd)
-BuildRequires:	llvm-static-devel
 BuildRequires:	llvm-polly-devel
-BuildRequires:	doxygen
-BuildRequires:	graphviz
-BuildRequires:  git-core
+BuildRequires:	llvm-static-devel
 BuildRequires:	pkgconfig(libmicrohttpd)
 BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:	pkgconfig(libzstd)
 BuildRequires:	pkgconfig(z3)
+Requires:	%{libname} = %{EVRD}
 Requires:	glitz
-Suggests:	jackit
 Suggests:	csound
+Suggests:	jackit
 Suggests:	octave
 
 %description
@@ -51,27 +67,125 @@ processor block-diagram: a piece of code that produces output signals
 according to its input signals (and maybe some user interface parameters)
 
 %files
-%doc examples
+# All this stuff is already in %%{_datadir}/%%{name}/examples
+# and generates boatloads of rpmlint warnings: don't list it twice
+#doc examples
+%license COPYING.txt
+%doc README.md
 %{_bindir}/%{name}
 %{_bindir}/%{name}-config
 %{_bindir}/%{name}path
 %{_bindir}/%{name}optflags
 %{_bindir}/faustremote
-%{_includedir}/%{name}
-%{_datadir}/%{name}
-%{_mandir}/man1/*.1*
 %{_bindir}/encoderunitypackage
 %{_bindir}/filename2ident
 %{_bindir}/sound2reader
 %{_bindir}/usage.sh
+%{_datadir}/%{name}
+%{_mandir}/man1/%{name}.1*
+
+#----------------------------------------------------------------------------
+
+%package -n	%{libname}
+Summary:	 Main library for %{name}
+Group:		System/Libraries
+
+%description -n	%{libname}
+Faust AUdio STreams is a functional programming language for real-time audio
+signal processing. Its programming model combines two approaches : functional
+programming and block diagram composition. You can think of FAUST as a
+structured block diagram language with a textual syntax.
+This package contains the main %{name} library.
+
+%files -n %{libname}
+%license COPYING.txt
+%{_libdir}/lib%{name}.so.%{major}*
+
+#----------------------------------------------------------------------------
+
+%package -n %{libname_itp}
+Summary:	Faust Machine library
+Group:		System/Libraries
+
+%description -n	%{libname_itp}
+Faust AUdio STreams is a functional programming language for real-time audio
+signal processing. Its programming model combines two approaches : functional
+programming and block diagram composition. You can think of FAUST as a
+structured block diagram language with a textual syntax.
+This package contains the %{name} machine component library.
+
+%files -n %{libname_itp}
+%license COPYING.txt
+%{_libdir}/lib%{name}machine.so.%{major_itp}*
+
+#----------------------------------------------------------------------------
+
+%package -n	%{libname_http}
+Summary:	HTTPD Faust library
+Group:	System/Libraries
+
+%description -n	%{libname_http}
+Faust AUdio STreams is a functional programming language for real-time audio
+signal processing. Its programming model combines two approaches : functional
+programming and block diagram composition. You can think of FAUST as a
+structured block diagram language with a textual syntax.
+This package contains the HTTPD %{name} component library.
+
+%files -n %{libname_http}
+%license COPYING.txt
+%{_libdir}/libHTTPDFaust.so.%{major_http}*
+
+#----------------------------------------------------------------------------
+
+%package -n	%{libname_osc}
+Summary:	OSC Faust library
+Group:	System/Libraries
+
+%description -n	%{libname_osc}
+Faust AUdio STreams is a functional programming language for real-time audio
+signal processing. Its programming model combines two approaches : functional
+programming and block diagram composition. You can think of FAUST as a
+structured block diagram language with a textual syntax.
+This package contains the OSC %{name} component library.
+
+%files -n %{libname_osc}
+%license COPYING.txt
+%{_libdir}/libOSCFaust.so.%{major_osc}*
+
+#----------------------------------------------------------------------------
+
+%package -n %{develname}
+Summary:	Development package for %{name}
+Group:		Development/C++
+Requires:	%{libname} = %{EVRD}
+Requires:	%{libname_itp} = %{EVRD}
+Requires:	%{libname_http} = %{EVRD}
+Requires:	%{libname_osc} = %{EVRD}
+Provides:	%{name}-devel = %{EVRD}
+# Before now the includes were in main package
+Conflicts:	%{name} < %{version}-%{release}
+
+%description -n	%{develname}
+Faust AUdio STreams is a functional programming language for real-time audio
+signal processing. Its programming model combines two approaches : functional
+programming and block diagram composition. You can think of FAUST as a
+structured block diagram language with a textual syntax.
+This package contains the files needed for development with %{name}.
+
+%files -n %{develname}
+%license COPYING.txt
+%{_includedir}/%{name}/
+%{_libdir}/lib%{name}.so
+%{_libdir}/lib%{name}machine.so
+%{_libdir}/libHTTPDFaust.so
+%{_libdir}/libOSCFaust.so
 
 #----------------------------------------------------------------------------
 
 %package doc
 Summary:	Documentation for %{name}
-
 License:	GPLv2+
-Group:		Development/Other
+Group:	Development/Other
 BuildArch:	noarch
 
 %description doc
@@ -80,14 +194,16 @@ signal processing. This package provides documentation files to help with
 writing programs with faust.
 
 %files doc
-%doc documentation/*
+# Only install dirs with actual docs
+%doc documentation/*.pdf
+%doc  documentation/misc
 
 #----------------------------------------------------------------------------
 
 %package tools
 Summary:	3rd party tools written for %{name}
 License:	GPLv2+
-Group:		Development/Other
+Group:	Development/Other
 Requires:	%{name} = %{EVRD}
 
 %description tools
@@ -103,7 +219,7 @@ to help the building process of applications and plugins with Faust.
 %package kate
 Summary:	Kate/Kwrite plugin for %{name}
 License:	GPLv2+
-Group:		Development/Other
+Group:	Development/Other
 Requires:	%{name} = %{EVRD}
 
 %description kate
@@ -118,14 +234,31 @@ for KDE's Kate/Kwrite.
 #----------------------------------------------------------------------------
 
 %install -a
-# install kate syntax highlighter
+# Install kate/kwrite syntax highlighter
 mkdir -p %{buildroot}%{_datadir}/katepart/syntax
-cp syntax-highlighting/faust.xml %{buildroot}%{_datadir}/katepart/syntax
+cp syntax-highlighting/%{name}.xml %{buildroot}%{_datadir}/katepart/syntax
 
-# remove NaziOS crap
-rm -fr %{buildroot}%{_datadir}/faust/iOS/
-rm -fr %{buildroot}%{_datadir}/faust/iPhone/
-# and the unneeded android lib too
-rm -fr %{buildroot}%{_datadir}/faust/android/
-# and static libs
-rm -fr %{buildroot}%{_prefix}/lib
+# Remove unwanted stuff (support for android, ios...)...
+rm -fr %{buildroot}%{_datadir}/%{name}/AU/
+rm -fr %{buildroot}%{_datadir}/%{name}/api/
+rm -fr %{buildroot}%{_datadir}/%{name}/iOS/
+rm -fr %{buildroot}%{_datadir}/%{name}/iOSKeyboard/
+rm -fr %{buildroot}%{_datadir}/%{name}/iPhone/
+rm -fr %{buildroot}%{_datadir}/%{name}/smartKeyboard/
+# ... and the unneeded android lib too...
+rm -fr %{buildroot}%{_datadir}/%{name}/android/
+# ... and static libs,,,
+rm -fr %{buildroot}%{_libdir}/*.a
+# ... and non-ELF binary files...
+rm -f %{buildroot}%{_datadir}/%{name}/max-msp/sndfile/arm/libsndfile.a
+rm -f %{buildroot}%{_datadir}/%{name}/max-msp/sndfile/intel/libsndfile.a
+# ... and zero lenght files
+rm -f %{buildroot}%{_datadir}/%{name}/esp32/drivers/ac101/component.mk
+rm -f %{buildroot}%{_datadir}/%{name}/esp32/drivers/es8388/component.mk
+rm -f %{buildroot}%{_datadir}/%{name}/esp32/drivers/wm8978/component.mk
+
+# Fix perms
+chmod +x %{buildroot}%{_bindir}/%{name}2wwise
+chmod +x %{buildroot}%{_datadir}/%{name}/autodiff/autodiff.sh
+chmod +x %{buildroot}%{_datadir}/%{name}/clap/faust-hot-reload.py
+chmod +x %{buildroot}%{_datadir}/%{name}/wwise/orchestrator.py

@@ -1,0 +1,12 @@
+diff -rupN faust-2.85.5.old/build/interp/CMakeLists.txt faust-2.85.5/build/interp/CMakeLists.txt
+--- faust-2.85.5.old/build/interp/CMakeLists.txt	2026-03-20 09:58:57.000000000 +0100
++++ faust-2.85.5/build/interp/CMakeLists.txt	2026-03-22 16:30:22.175758876 +0100
+@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.6.0)
+ #######################################
+ # versions management
+ set (VERSION 1.0.0)
+-set (SOVERS 0)
++set (SOVERS 1)
+ 
+ #######################################
+ # options
