@@ -10,7 +10,7 @@
 
 Summary:	Faust AUdio Stream (real-time audio signal processing language)
 Name:		faust
-Version:	2.85.5
+Version:	2.85.9
 Release:	1
 License:	GPLv2+ and BSD
 Group:		Development/Other
@@ -28,7 +28,8 @@ BuildOption:	-DINCLUDE_DYNAMIC:BOOL=ON
 BuildOption:	-DINCLUDE_STATIC:BOOL=OFF
 BuildOption:	-DINCLUDE_ITP:BOOL=ON
 BuildOption:	-DINCLUDE_STATIC:BOOL=OFF
-BuildOption:	-DLLVM_LINK_STATIC:BOOL=OFF
+#BuildOption:	-DLLVM_LINK_STATIC:BOOL=OFF
+BuildOption:	-DLINK_LLVM_STATIC:BOOL=OFF
 BuildOption:	-DLIBSDIR="%{_lib}"
 
 BuildRequires:	cmake
@@ -259,6 +260,7 @@ rm -f %{buildroot}%{_datadir}/%{name}/esp32/drivers/es8388/component.mk
 rm -f %{buildroot}%{_datadir}/%{name}/esp32/drivers/wm8978/component.mk
 
 # Fix perms
+chmod -x %{buildroot}%{_bindir}/%{name}2wwise.cmd
 chmod +x %{buildroot}%{_bindir}/%{name}2wwise
 chmod +x %{buildroot}%{_datadir}/%{name}/autodiff/autodiff.sh
 chmod +x %{buildroot}%{_datadir}/%{name}/clap/faust-hot-reload.py
