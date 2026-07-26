@@ -1,0 +1,53 @@
+--- faust-2.85.9/compiler/generator/llvm/llvm_instructions.hh	2026-06-30 14:48:41.000000000 +0200
++++ faust-2.85.9/compiler/generator/llvm/llvm_instructions.hh	2026-07-26 15:01:11.622613003 +0200
+@@ -975,11 +975,14 @@
+ #if LLVM_VERSION_MAJOR >= 8
+             // LLVM unary intrinsic
+         } else if (fUnaryIntrinsicTable.find(inst->fName) != fUnaryIntrinsicTable.end()) {
+-            llvm::CallInst* call_inst =
++            llvm::Value* value_inst =
+                 fBuilder->CreateUnaryIntrinsic(fUnaryIntrinsicTable[inst->fName], fun_args[0]);
+-            AddAttributeAtIndex(call_inst, llvm::AttributeList::FunctionIndex,
+-                                llvm::Attribute::Builtin);
+-            fCurValue = call_inst;
++            llvm::CallInst* call_inst = llvm::dyn_cast<llvm::CallInst>(value_inst);
++            if (call_inst) {
++                AddAttributeAtIndex(call_inst, llvm::AttributeList::FunctionIndex,
++                                    llvm::Attribute::Builtin);
++            }
++            fCurValue = value_inst;
+ 
+             // LLVM binary intrinsic
+         } else if (fBinaryIntrinsicTable.find(inst->fName) != fBinaryIntrinsicTable.end()) {
+--- faust-2.85.9/compiler/generator/llvm/llvm_dynamic_dsp_aux.cpp	2026-06-30 14:48:41.000000000 +0200
++++ faust-2.85.9/compiler/generator/llvm/llvm_dynamic_dsp_aux.cpp	2026-07-26 15:01:11.622752675 +0200
+@@ -311,14 +311,14 @@
+         targetOptions.AllowFPOpFusion = FPOpFusion::Fast;
+ #if LLVM_VERSION_MAJOR < 22
+         targetOptions.UnsafeFPMath = true;
+-#endif
+         targetOptions.NoInfsFPMath          = true;
+         targetOptions.NoNaNsFPMath          = true;
++#endif
+         targetOptions.GuaranteedTailCallOpt = true;
+         targetOptions.NoTrappingFPMath      = true;
+     }
+ 
+-#if LLVM_VERSION_MAJOR >= 9
++#if LLVM_VERSION_MAJOR >= 9 && LLVM_VERSION_MAJOR < 22
+     targetOptions.NoSignedZerosFPMath = true;
+ #endif
+ 
+@@ -500,7 +500,12 @@
+ #endif
+ 
+     string Error;
++#if LLVM_VERSION_MAJOR >= 23
++    llvm::Triple TargetTripleObj(TargetTriple);
++    auto   Target = TargetRegistry::lookupTarget(TargetTripleObj, Error);
++#else
+     auto   Target = TargetRegistry::lookupTarget(TargetTriple, Error);
++#endif
+ 
+     // Print an error and exit if we couldn't find the requested target.
+     // This generally occurs if we've forgotten to initialise the

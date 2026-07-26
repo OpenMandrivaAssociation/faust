@@ -19,6 +19,7 @@ Source0:	https://github.com/grame-cncm/faust/releases/download/%{version}/%{name
 Source100:	faust.rpmlintrc
 Patch0:	faust-2.85.5-fix-env-shebangs.patch
 Patch1:	faust-2.85.5-fix-faustmachine-soname.patch
+Patch2:	faust-2.85.9-llvm-23.patch
 
 BuildSystem:	cmake
 BuildOption:	-S ../build
