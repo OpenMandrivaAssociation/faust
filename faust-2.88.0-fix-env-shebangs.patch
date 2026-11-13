@@ -1,0 +1,479 @@
+diff -rupN faust-2.88.0.old/architecture/android/gradlew faust-2.88.0/architecture/android/gradlew
+--- faust-2.88.0.old/architecture/android/gradlew	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/architecture/android/gradlew	2026-11-13 16:09:36.617225728 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ 
+ ##############################################################################
+ ##
+diff -rupN faust-2.88.0.old/architecture/clap/faust-hot-reload.py faust-2.88.0/architecture/clap/faust-hot-reload.py
+--- faust-2.88.0.old/architecture/clap/faust-hot-reload.py	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/architecture/clap/faust-hot-reload.py	2026-11-13 16:09:14.008829285 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ #created by Facundo Franchino
+ """
+ Faust Hot Reload GUI
+@@ -292,4 +292,4 @@ class FaustHotReloadGUI:
+ 
+ if __name__ == "__main__":
+     app = FaustHotReloadGUI()
+-    app.run()
+\ Manca newline alla fine del file
++    app.run()
+diff -rupN faust-2.88.0.old/architecture/daisy/daisy_soundfile_gen.py faust-2.88.0/architecture/daisy/daisy_soundfile_gen.py
+--- faust-2.88.0.old/architecture/daisy/daisy_soundfile_gen.py	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/architecture/daisy/daisy_soundfile_gen.py	2026-11-13 16:10:04.081709663 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ # ---------------------------------------------------------------------
+ # faust2daisy : compile-time Soundfile support
+ #
+diff -rupN faust-2.88.0.old/architecture/daisy/sd_upload.py faust-2.88.0/architecture/daisy/sd_upload.py
+--- faust-2.88.0.old/architecture/daisy/sd_upload.py	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/architecture/daisy/sd_upload.py	2026-11-13 16:10:15.802060032 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ # ---------------------------------------------------------------------
+ # faust2daisy : host-side soundfile uploader
+ #
+diff -rupN faust-2.88.0.old/architecture/smartKeyboard/android/gradlew faust-2.88.0/architecture/smartKeyboard/android/gradlew
+--- faust-2.88.0.old/architecture/smartKeyboard/android/gradlew	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/architecture/smartKeyboard/android/gradlew	2026-11-13 16:11:12.411297986 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ 
+ ##############################################################################
+ ##
+diff -rupN faust-2.88.0.old/architecture/wwise/orchestrator.py faust-2.88.0/architecture/wwise/orchestrator.py
+--- faust-2.88.0.old/architecture/wwise/orchestrator.py	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/architecture/wwise/orchestrator.py	2026-11-13 16:10:44.170928630 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ """
+ The Faust2Wwise conversion process is applied with the following steps:
+     Preliminary/Preparation Step: Setup and Validation
+@@ -330,4 +330,4 @@ class Faust2WwiseOrchestrator:
+         self.build_plugin()             # step 5
+         self.cleanup()                  # outro
+         
+-        self.cfg.print_summary()        # print summary info
+\ Manca newline alla fine del file
++        self.cfg.print_summary()        # print summary info
+diff -rupN faust-2.88.0.old/libraries/doc/scripts/inject_plots.py faust-2.88.0/libraries/doc/scripts/inject_plots.py
+--- faust-2.88.0.old/libraries/doc/scripts/inject_plots.py	2026-09-04 08:30:36.000000000 +0200
++++ faust-2.88.0/libraries/doc/scripts/inject_plots.py	2026-11-13 16:12:05.100446716 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ """Insert generated plots into one generated library page.
+ 
+ Injection is by convention rather than by annotation: a heading for
+diff -rupN faust-2.88.0.old/libraries/scripts/audit2.py faust-2.88.0/libraries/scripts/audit2.py
+--- faust-2.88.0.old/libraries/scripts/audit2.py	2026-09-04 08:30:36.000000000 +0200
++++ faust-2.88.0/libraries/scripts/audit2.py	2026-11-13 16:14:04.360015519 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ """Documentation coverage audit — authoritative version.
+ 
+ For each git-tracked .lib at the repository root, compares top-level
+diff -rupN faust-2.88.0.old/libraries/scripts/audit.py faust-2.88.0/libraries/scripts/audit.py
+--- faust-2.88.0.old/libraries/scripts/audit.py	2026-09-04 08:30:36.000000000 +0200
++++ faust-2.88.0/libraries/scripts/audit.py	2026-11-13 16:14:11.456527428 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ """Documentation coverage audit — naive first pass.
+ 
+ Matches one doc marker per line against top-level definitions. It does NOT
+diff -rupN faust-2.88.0.old/libraries/scripts/build_faust_doc_index.py faust-2.88.0/libraries/scripts/build_faust_doc_index.py
+--- faust-2.88.0.old/libraries/scripts/build_faust_doc_index.py	2026-09-04 08:30:36.000000000 +0200
++++ faust-2.88.0/libraries/scripts/build_faust_doc_index.py	2026-11-13 16:13:57.664658245 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ """Build a JSON documentation index from a local Faust libraries checkout.
+ 
+ This script extracts documentation directly from Faust `.lib` source files rather
+diff -rupN faust-2.88.0.old/libraries/scripts/build_standard_functions.py faust-2.88.0/libraries/scripts/build_standard_functions.py
+--- faust-2.88.0.old/libraries/scripts/build_standard_functions.py	2026-09-04 08:30:36.000000000 +0200
++++ faust-2.88.0/libraries/scripts/build_standard_functions.py	2026-11-13 16:13:50.240431072 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ """Generate doc/docs/standardFunctions.md from the source markers.
+ 
+ The set of functions comes from the `` `name` is a standard Faust function ``
+diff -rupN faust-2.88.0.old/libraries/scripts/checkdoc.py faust-2.88.0/libraries/scripts/checkdoc.py
+--- faust-2.88.0.old/libraries/scripts/checkdoc.py	2026-09-04 08:30:36.000000000 +0200
++++ faust-2.88.0/libraries/scripts/checkdoc.py	2026-11-13 16:13:42.352071564 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ """Documentation quality gate.
+ 
+ Aggregates the repository's documentation checks and fails on any
+diff -rupN faust-2.88.0.old/libraries/scripts/faust_doc_api.py faust-2.88.0/libraries/scripts/faust_doc_api.py
+--- faust-2.88.0.old/libraries/scripts/faust_doc_api.py	2026-09-04 08:30:36.000000000 +0200
++++ faust-2.88.0/libraries/scripts/faust_doc_api.py	2026-11-13 16:13:34.328080296 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ """Query a Faust documentation index with faustforge-like operations.
+ 
+ This script is the local counterpart of the Faust-library tools exposed by the
+diff -rupN faust-2.88.0.old/libraries/scripts/floatdiff.py faust-2.88.0/libraries/scripts/floatdiff.py
+--- faust-2.88.0.old/libraries/scripts/floatdiff.py	2026-09-04 08:30:36.000000000 +0200
++++ faust-2.88.0/libraries/scripts/floatdiff.py	2026-11-13 16:13:26.407085320 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ import sys
+ import math
+ import argparse
+diff -rupN faust-2.88.0.old/libraries/scripts/normalize_licenses.py faust-2.88.0/libraries/scripts/normalize_licenses.py
+--- faust-2.88.0.old/libraries/scripts/normalize_licenses.py	2026-09-04 08:30:36.000000000 +0200
++++ faust-2.88.0/libraries/scripts/normalize_licenses.py	2026-11-13 16:13:18.697175715 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ """Normalize `declare ... license` strings to SPDX identifiers.
+ 
+ The libraries historically used 16+ spellings for ~8 actual licenses
+diff -rupN faust-2.88.0.old/libraries/scripts/plot_families.py faust-2.88.0/libraries/scripts/plot_families.py
+--- faust-2.88.0.old/libraries/scripts/plot_families.py	2026-09-04 08:30:36.000000000 +0200
++++ faust-2.88.0/libraries/scripts/plot_families.py	2026-11-13 16:13:11.287869143 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ """Generate documentation plots for the library families beyond aanl.lib.
+ 
+ Companion to `plot_lib.py` (the aanl.lib prototype, whose probe runner is
+diff -rupN faust-2.88.0.old/libraries/scripts/plot_lib.py faust-2.88.0/libraries/scripts/plot_lib.py
+--- faust-2.88.0.old/libraries/scripts/plot_lib.py	2026-09-04 08:30:36.000000000 +0200
++++ faust-2.88.0/libraries/scripts/plot_lib.py	2026-11-13 16:13:02.838451904 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ """Generate documentation plots for library functions.
+ 
+ Prototype scope: `aanl.lib`, the antialiased nonlinearities. Those are the
+diff -rupN faust-2.88.0.old/libraries/scripts/sig2lean.py faust-2.88.0/libraries/scripts/sig2lean.py
+--- faust-2.88.0.old/libraries/scripts/sig2lean.py	2026-09-04 08:30:36.000000000 +0200
++++ faust-2.88.0/libraries/scripts/sig2lean.py	2026-11-13 16:12:52.494325916 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ """faust-rs `--dump-sig` output  ->  Lean 4 `Sig` terms + certification theorems.
+ 
+     sig2lean.py <template.lean> <out.lean> <file.dsp> [<file.dsp> ...]
+diff -rupN faust-2.88.0.old/tests/impulse-tests/tools/impulseasc.js faust-2.88.0/tests/impulse-tests/tools/impulseasc.js
+--- faust-2.88.0.old/tests/impulse-tests/tools/impulseasc.js	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tests/impulse-tests/tools/impulseasc.js	2026-11-13 15:56:27.463260250 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env node
++#!/usr/bin/node
+ 
+ /*
+  * Experimental impulse runner for the Faust AssemblyScript backend.
+diff -rupN faust-2.88.0.old/tests/jax-tests/benchmark_delays.py faust-2.88.0/tests/jax-tests/benchmark_delays.py
+--- faust-2.88.0.old/tests/jax-tests/benchmark_delays.py	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tests/jax-tests/benchmark_delays.py	2026-11-13 16:00:44.709377532 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ """
+ Benchmark script for testing JAX delay line optimizations.
+ 
+@@ -237,4 +237,4 @@ Always verify correctness when changing
+         sys.exit(1)
+ 
+ if __name__ == "__main__":
+-    main()
+\ Manca newline alla fine del file
++    main()
+diff -rupN faust-2.88.0.old/tests/jax-tests/display_benchmark_summary.py faust-2.88.0/tests/jax-tests/display_benchmark_summary.py
+--- faust-2.88.0.old/tests/jax-tests/display_benchmark_summary.py	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tests/jax-tests/display_benchmark_summary.py	2026-11-13 16:00:26.669070529 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ """Display benchmark summary from JSON results."""
+ 
+ import json
+@@ -23,4 +23,4 @@ def main():
+     return 0
+ 
+ if __name__ == "__main__":
+-    sys.exit(main())
+\ Manca newline alla fine del file
++    sys.exit(main())
+diff -rupN faust-2.88.0.old/tests/jax-tests/test_ci_validation.py faust-2.88.0/tests/jax-tests/test_ci_validation.py
+--- faust-2.88.0.old/tests/jax-tests/test_ci_validation.py	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tests/jax-tests/test_ci_validation.py	2026-11-13 16:00:05.908368589 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ """
+ CI validation script for JAX backend tests.
+ Ensures critical features are working correctly.
+@@ -178,4 +178,4 @@ def main():
+     return 0
+ 
+ if __name__ == "__main__":
+-    sys.exit(main())
+\ Manca newline alla fine del file
++    sys.exit(main())
+diff -rupN faust-2.88.0.old/tests/jax-tests/test_magic_clamp_integration.py faust-2.88.0/tests/jax-tests/test_magic_clamp_integration.py
+--- faust-2.88.0.old/tests/jax-tests/test_magic_clamp_integration.py	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tests/jax-tests/test_magic_clamp_integration.py	2026-11-13 15:59:18.715992413 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ """
+ Test that magic_clamp integration works correctly in compiled Faust DSPs.
+ """
+diff -rupN faust-2.88.0.old/tests/jax-tests/test_random.py faust-2.88.0/tests/jax-tests/test_random.py
+--- faust-2.88.0.old/tests/jax-tests/test_random.py	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tests/jax-tests/test_random.py	2026-11-13 15:59:37.539876076 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ """
+ Test script for JAX random_uniform foreign function feature.
+ This verifies that the random generation produces proper random values
+diff -rupN faust-2.88.0.old/tests/synthetic/summary.py faust-2.88.0/tests/synthetic/summary.py
+--- faust-2.88.0.old/tests/synthetic/summary.py	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tests/synthetic/summary.py	2026-11-13 15:55:49.189955557 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ """Summary of a bench results.tsv : per family, the ocpp/cpp ratio (geomean,
+ best, worst), the medians, and the efficiency per unit of work of each
+ backend (nanoseconds per frame and per unit) with the most and least
+diff -rupN faust-2.88.0.old/tests/ui-export/check_html.py faust-2.88.0/tests/ui-export/check_html.py
+--- faust-2.88.0.old/tests/ui-export/check_html.py	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tests/ui-export/check_html.py	2026-11-13 15:55:11.621235022 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ """
+ Simple HTML sanity check:
+ - Ensures presence of key widget classes and data attributes.
+diff -rupN faust-2.88.0.old/tests/ui-export/check_svg.py faust-2.88.0/tests/ui-export/check_svg.py
+--- faust-2.88.0.old/tests/ui-export/check_svg.py	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tests/ui-export/check_svg.py	2026-11-13 15:55:22.797495270 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ """
+ Simple SVG sanity check:
+ - Ensures presence of key widget classes and data attributes.
+diff -rupN faust-2.88.0.old/tools/faust2appls/check-au.sh faust-2.88.0/tools/faust2appls/check-au.sh
+--- faust-2.88.0.old/tools/faust2appls/check-au.sh	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tools/faust2appls/check-au.sh	2026-11-13 16:06:48.661493987 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ failures=0
+ for i in `seq 0 $1`; do
+ 	auvaltool -v aufx cabl Gram 1> /dev/null 2> /dev/null
+diff -rupN faust-2.88.0.old/tools/faust2appls/faust2atomsnippets faust-2.88.0/tools/faust2appls/faust2atomsnippets
+--- faust-2.88.0.old/tools/faust2appls/faust2atomsnippets	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tools/faust2appls/faust2atomsnippets	2026-11-13 16:04:35.996665471 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ 
+ # ---------------------- faust2atomsnippets -----------------------
+ # Usage: `faust2atomsnippets *.lib > faust-library.cson`
+diff -rupN faust-2.88.0.old/tools/faust2appls/faust2clap faust-2.88.0/tools/faust2appls/faust2clap
+--- faust-2.88.0.old/tools/faust2appls/faust2clap	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tools/faust2appls/faust2clap	2026-11-13 16:04:26.956142722 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ """faust2clap - compile a Faust DSP program into a CLAP plugin.
+ 
+ This tool is written in Python while its siblings in this directory are bash
+diff -rupN faust-2.88.0.old/tools/faust2appls/faust2cpalrust faust-2.88.0/tools/faust2appls/faust2cpalrust
+--- faust-2.88.0.old/tools/faust2appls/faust2cpalrust	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tools/faust2appls/faust2cpalrust	2026-11-13 16:05:36.172213351 +0100
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env bash
++#! /usr/bin/bash
+ set -e
+ 
+ #####################################################################
+diff -rupN faust-2.88.0.old/tools/faust2appls/faust2jackrust faust-2.88.0/tools/faust2appls/faust2jackrust
+--- faust-2.88.0.old/tools/faust2appls/faust2jackrust	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tools/faust2appls/faust2jackrust	2026-11-13 16:06:00.596468149 +0100
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env bash
++#! /usr/bin/bash
+ set -e
+ 
+ #####################################################################
+diff -rupN faust-2.88.0.old/tools/faust2appls/faust2md faust-2.88.0/tools/faust2appls/faust2md
+--- faust-2.88.0.old/tools/faust2appls/faust2md	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tools/faust2appls/faust2md	2026-11-13 16:04:18.931968013 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ #
+ # ---------------------- faust2md ----------------------
+ # Usage: `faust2md [-t 4] [-c] [-f] foo.dsp > foo.md`
+diff -rupN faust-2.88.0.old/tools/faust2appls/faust2portaudiorust faust-2.88.0/tools/faust2appls/faust2portaudiorust
+--- faust-2.88.0.old/tools/faust2appls/faust2portaudiorust	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tools/faust2appls/faust2portaudiorust	2026-11-13 16:06:19.892917742 +0100
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env bash
++#! /usr/bin/bash
+ set -e
+ 
+ #####################################################################
+diff -rupN faust-2.88.0.old/tools/faust2appls/faust2sc.py faust-2.88.0/tools/faust2appls/faust2sc.py
+--- faust-2.88.0.old/tools/faust2appls/faust2sc.py	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tools/faust2appls/faust2sc.py	2026-11-13 16:04:11.426913510 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ # Compile a faust file as a SuperCollider help file
+ import os
+ import sys
+diff -rupN faust-2.88.0.old/tools/faust2appls/faust2sublimecompletions faust-2.88.0/tools/faust2appls/faust2sublimecompletions
+--- faust-2.88.0.old/tools/faust2appls/faust2sublimecompletions	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tools/faust2appls/faust2sublimecompletions	2026-11-13 16:04:02.571554350 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ 
+ # ---------------------- faust2sublimecompletions -----------------------
+ # Usage: `faust2sublimecompletions *.lib > faust.sublime-completions`
+diff -rupN faust-2.88.0.old/tools/faust2appls/faust2tidalcycles faust-2.88.0/tools/faust2appls/faust2tidalcycles
+--- faust-2.88.0.old/tools/faust2appls/faust2tidalcycles	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tools/faust2appls/faust2tidalcycles	2026-11-13 16:03:34.795130869 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ 
+ import os
+ import os.path
+diff -rupN faust-2.88.0.old/tools/faust2appls/faust2wwise.py faust-2.88.0/tools/faust2appls/faust2wwise.py
+--- faust-2.88.0.old/tools/faust2appls/faust2wwise.py	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tools/faust2appls/faust2wwise.py	2026-11-13 16:03:22.794954392 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ 
+ # #####################################################################
+ #                                                                     #
+@@ -180,4 +180,4 @@ if __name__ == "__main__":
+ 
+             print("Exiting faust2wwise with error code 1 : Missing or inaccessible environment variables or system calls.")
+             print_message_on_fail()
+-            sys.exit(1)
+\ Manca newline alla fine del file
++            sys.exit(1)
+diff -rupN faust-2.88.0.old/tools/faust2sc-1.0.0/faust2sc faust-2.88.0/tools/faust2sc-1.0.0/faust2sc
+--- faust-2.88.0.old/tools/faust2sc-1.0.0/faust2sc	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tools/faust2sc-1.0.0/faust2sc	2026-11-13 16:08:36.056107582 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # ======================================================================
+ # faust2sc - Generate language modules from Faust XML.
+ # Copyright (C) 2005-2008 Stefan Kersten
+diff -rupN faust-2.88.0.old/tools/faustauto/faustauto.py faust-2.88.0/tools/faustauto/faustauto.py
+--- faust-2.88.0.old/tools/faustauto/faustauto.py	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tools/faustauto/faustauto.py	2026-11-13 16:01:42.111599279 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ """faustauto — the complete auto mode of the ocpp backend, in two layers.
+ 
+ Layer 1 (static, free): the program signature (FAUST_SS_SIG) prunes the
+diff -rupN faust-2.88.0.old/tools/faustauto/genetic.py faust-2.88.0/tools/faustauto/genetic.py
+--- faust-2.88.0.old/tools/faustauto/genetic.py	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tools/faustauto/genetic.py	2026-11-13 16:01:34.631391283 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ """genetic — genetic exploration of the compilation-option space
+ around ONE program, under the promoted judge.
+ 
+diff -rupN faust-2.88.0.old/tools/faustauto/paramsearch.py faust-2.88.0/tools/faustauto/paramsearch.py
+--- faust-2.88.0.old/tools/faustauto/paramsearch.py	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tools/faustauto/paramsearch.py	2026-11-13 16:01:26.783365888 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ """paramsearch — layer 3: search over the compiler's numeric
+ parameters, under the same judge as the elections (six locks).
+ 
+diff -rupN faust-2.88.0.old/tools/physicalModeling/ir2dsp/ir2dspoly.py faust-2.88.0/tools/physicalModeling/ir2dsp/ir2dspoly.py
+--- faust-2.88.0.old/tools/physicalModeling/ir2dsp/ir2dspoly.py	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tools/physicalModeling/ir2dsp/ir2dspoly.py	2026-11-13 16:07:31.806605686 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ # -*- coding: utf-8 -*-
+ # id2dsp.py
+ # Copyright Pierre-Amaury Grumiaux, Pierre Jouvelot, Emilio Jesus Gallego Arias,
+@@ -149,4 +149,4 @@ file.write("\nprocess = pm.impulseExcita
+ 
+ file.close();
+ 
+-print(modelName + ".dsp has been successfully created!")
+\ Manca newline alla fine del file
++print(modelName + ".dsp has been successfully created!")
+diff -rupN faust-2.88.0.old/tools/physicalModeling/ir2dsp/ir2dsp.py faust-2.88.0/tools/physicalModeling/ir2dsp/ir2dsp.py
+--- faust-2.88.0.old/tools/physicalModeling/ir2dsp/ir2dsp.py	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tools/physicalModeling/ir2dsp/ir2dsp.py	2026-11-13 16:07:19.358477271 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ # -*- coding: utf-8 -*-
+ # id2dsp.py
+ # Copyright Pierre-Amaury Grumiaux, Pierre Jouvelot, Emilio Jesus Gallego Arias,
+@@ -146,4 +146,4 @@ file.write("\nprocess = pm.impulseExcita
+ 
+ file.close();
+ 
+-print(modelName + ".dsp has been successfully created!")
+\ Manca newline alla fine del file
++print(modelName + ".dsp has been successfully created!")
+diff -rupN faust-2.88.0.old/tools/scbuilder/scbuilder faust-2.88.0/tools/scbuilder/scbuilder
+--- faust-2.88.0.old/tools/scbuilder/scbuilder	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tools/scbuilder/scbuilder	2026-11-13 16:02:05.047496627 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ #
+ # File:         scbuilder
+ # Contents:     Build script for SuperCollider plugins
+diff -rupN faust-2.88.0.old/tools/wasm/emcc faust-2.88.0/tools/wasm/emcc
+--- faust-2.88.0.old/tools/wasm/emcc	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tools/wasm/emcc	2026-11-13 16:08:16.575355298 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ # macOS CMake configurations can add `-arch <architecture>` to these targets.
+ # Emscripten builds wasm32 and rejects that host-only option.
+ if [[ -z ${FAUST_REAL_EMCC:-} ]]; then
+diff -rupN faust-2.88.0.old/tools/wasm/python3 faust-2.88.0/tools/wasm/python3
+--- faust-2.88.0.old/tools/wasm/python3	2026-09-08 18:35:43.000000000 +0200
++++ faust-2.88.0/tools/wasm/python3	2026-11-13 16:08:04.279335043 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ # Emscripten currently requires Python 3.10+.  Keep the Xcode-provided
+ # Python 3.9 from being selected through emcc's `/usr/bin/env python3` shebang.
+ for python in python3.13 python3.12 python3.11 python3.10; do

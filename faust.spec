@@ -10,16 +10,17 @@
 
 Summary:	Faust AUdio Stream (real-time audio signal processing language)
 Name:		faust
-Version:	2.85.9
-Release:	2
-License:	GPLv2+ and BSD
+Version:	2.88.0
+Release:	1
+License:	LGPL-2.1-or-later and BSD-1-Clause
 Group:		Development/Other
 Url:		https://faust.grame.fr/
 Source0:	https://github.com/grame-cncm/faust/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source100:	faust.rpmlintrc
-Patch0:	faust-2.85.5-fix-env-shebangs.patch
+Patch0:	faust-2.88.0-fix-env-shebangs.patch
 Patch1:	faust-2.85.5-fix-faustmachine-soname.patch
-Patch2:	faust-2.85.9-llvm-23.patch
+# Fixed upstream
+#Patch2:	faust-2.85.9-llvm-23.patch
 
 BuildSystem:	cmake
 BuildOption:	-S ../build
@@ -187,7 +188,7 @@ This package contains the files needed for development with %{name}.
 
 %package doc
 Summary:	Documentation for %{name}
-License:	GPLv2+
+License:	GPL-2.0-or-later
 Group:	Development/Other
 BuildArch:	noarch
 
@@ -205,7 +206,7 @@ writing programs with faust.
 
 %package tools
 Summary:	3rd party tools written for %{name}
-License:	GPLv2+
+License:	GPL-2.0-or-later
 Group:	Development/Other
 Requires:	%{name} = %{EVRD}
 
@@ -221,7 +222,7 @@ to help the building process of applications and plugins with Faust.
 
 %package kate
 Summary:	Kate/Kwrite plugin for %{name}
-License:	GPLv2+
+License:	GPL-2.0-or-later
 Group:	Development/Other
 Requires:	%{name} = %{EVRD}
 
@@ -261,8 +262,10 @@ rm -f %{buildroot}%{_datadir}/%{name}/esp32/drivers/es8388/component.mk
 rm -f %{buildroot}%{_datadir}/%{name}/esp32/drivers/wm8978/component.mk
 
 # Fix perms
-chmod -x %{buildroot}%{_bindir}/%{name}2wwise.cmd
+#chmod -x %%{buildroot}%%{_bindir}/%%{name}2wwise.cmd
 chmod +x %{buildroot}%{_bindir}/%{name}2wwise
-chmod +x %{buildroot}%{_datadir}/%{name}/autodiff/autodiff.sh
+chmod +x %{buildroot}%{_datadir}/%{name}/daisy/daisy_soundfile_gen.py
+chmod +x %{buildroot}%{_datadir}/%{name}/daisy/sd_upload.py
+#chmod +x %%{buildroot}%%{_datadir}/%%{name}/autodiff/autodiff.sh
 chmod +x %{buildroot}%{_datadir}/%{name}/clap/faust-hot-reload.py
 chmod +x %{buildroot}%{_datadir}/%{name}/wwise/orchestrator.py
